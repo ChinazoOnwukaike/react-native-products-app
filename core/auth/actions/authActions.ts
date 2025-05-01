@@ -9,16 +9,17 @@ export interface AuthResponse {
   token: string;
 }
 
-const returnUserToken = (data: AuthResponse) => {
-  const { id, email, fullName, isActive, roles, token } = data;
+const returnUserToken = (data: AuthResponse): { user: User; token: string } => {
+  // const { id, email, fullName, isActive, roles, token } = data;
+  const { token, ...user } = data;
 
-  const user: User = {
-    id,
-    email,
-    fullName,
-    isActive,
-    roles,
-  };
+  // const user: User = {
+  //   id,
+  //   email,
+  //   fullName,
+  //   isActive,
+  //   roles,
+  // };
 
   return { user, token };
 };
