@@ -1,6 +1,10 @@
-// TODO: conectart mediante envs vars, Android e IOS
+import axios from "axios";
 
-const productsApi = fetch(`localhost:3000/api`);
+// TODO: conectar mediante envs vars, Android e IOS
+
+const productsApi = axios.create({
+  baseURL: "localhost:300/api",
+});
 
 // TODO: interceptors
 
