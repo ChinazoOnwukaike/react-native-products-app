@@ -1,4 +1,3 @@
-import { Platform } from "react-native";
 import { productsApi } from "../api/productsApi";
 import { User } from "../interfaces/user";
 
@@ -12,10 +11,6 @@ export interface AuthResponse {
 }
 
 // For Android in emulator
-const BASE_URL =
-  Platform.OS === "android"
-    ? "http://10.0.2.2:3000/api"
-    : "http://localhost:3000/api";
 
 const returnUserToken = (data: AuthResponse): { user: User; token: string } => {
   // const { id, email, fullName, isActive, roles, token } = data;
@@ -36,7 +31,7 @@ export const authLogin = async (email: string, password: string) => {
   email = email.toLowerCase();
 
   try {
-    const response = await fetch(`${BASE_URL}/auth/login`, {
+    const response = await fetch(`${productsApi}/auth/login`, {
       method: "POST",
       body: JSON.stringify({ email, password }),
     });
@@ -54,7 +49,7 @@ export const authLogin = async (email: string, password: string) => {
 
 export const authCheckStatus = async () => {
   try {
-    const response = await fetch(`${BASE_URL}/auth/check-status`, {
+    const response = await fetch(`${productsApi}/auth/check-status`, {
       method: "GET",
     });
 
