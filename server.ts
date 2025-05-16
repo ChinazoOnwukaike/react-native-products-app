@@ -16,10 +16,14 @@ const pool = new Pool({
 });
 
 app.get("/users", async (req, res) => {
-  const { rows } = await pool.query("SELECT * FROM users");
+  const { rows } = await pool.query("SELECT * FROM user");
   res.json(rows);
 });
 
-app.listen(3000, () => {
-  console.log("API server running on http://localhost:3000");
+app.get("/ping", (req, res) => {
+  res.json({ message: "pong" });
+});
+
+app.listen(3003, () => {
+  console.log("API server running on http://localhost:3003");
 });
